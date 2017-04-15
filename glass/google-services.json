@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1073848440141",
+    "firebase_url": "https://iscream-8873d.firebaseio.com",
+    "project_id": "iscream-8873d",
+    "storage_bucket": "iscream-8873d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073848440141:android:e9a4fc39c958484c",
+        "android_client_info": {
+          "package_name": "com.example.sarvex.iscream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073848440141-aejdllt97dh8jvmqs3uepi52ok31o72i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sarvex.iscream",
+            "certificate_hash": "59d9129157f8b5af4db1376f24fad55a800365d3"
+          }
+        },
+        {
+          "client_id": "1073848440141-iqjb8gd0l8u04rb61e1csa31q5pmlihe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_zV_9cleaNDzc91o0Y-Re7dFgxRGBtFU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073848440141-iqjb8gd0l8u04rb61e1csa31q5pmlihe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
