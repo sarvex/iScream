@@ -5,6 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.mikepenz.iconics.context.IconicsContextWrapper;
+
+import butterknife.ButterKnife;
+import icepick.Icepick;
+
 /**
  * Example shell activity which simply broadcasts to our receiver and exits.
  */

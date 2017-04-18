@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.sarvex.iscream;
+package com.example.sarvex.iscream.utility;
 
 import android.app.PendingIntent;
 import android.app.Service;

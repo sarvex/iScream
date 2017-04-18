@@ -18,6 +18,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.mikepenz.iconics.context.IconicsContextWrapper;
+
+import butterknife.ButterKnife;
+import icepick.Icepick;
+
 /*
  * Details activity class that loads LeanbackDetailsFragment class
  */

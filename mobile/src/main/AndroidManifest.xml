@@ -24,18 +24,31 @@
       android:name="com.google.android.gms.car.application"
       android:resource="@xml/automotive_app_desc"/>
 
-    <service android:name=".MyMessagingService"></service>
+    <service android:name=".utility.MyMessagingService"/>
 
-    <receiver android:name=".MessageReadReceiver">
+    <receiver android:name=".utility.MessageReadReceiver">
       <intent-filter>
         <action android:name="com.example.sarvex.iscream.ACTION_MESSAGE_READ"/>
       </intent-filter>
     </receiver>
-    <receiver android:name=".MessageReplyReceiver">
+    <receiver android:name=".utility.MessageReplyReceiver">
       <intent-filter>
         <action android:name="com.example.sarvex.iscream.ACTION_MESSAGE_REPLY"/>
       </intent-filter>
     </receiver>
+
+    <activity android:name=".login.LoginActivity">
+    </activity>
+    <activity android:name=".login.SignUpActivity">
+    </activity>
+    <activity android:name=".login.ForgotPasswordActivity">
+    </activity>
+    <activity android:name=".login.ProfileActivity">
+    </activity>
+    <activity android:name=".scream.AddActivity">
+    </activity>
+    <activity android:name=".scream.DetailActivity">
+    </activity>
   </application>
 
 </manifest>

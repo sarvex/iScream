@@ -25,6 +25,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.mikepenz.iconics.context.IconicsContextWrapper;
+
+import butterknife.ButterKnife;
+import icepick.Icepick;
+
 /*
  * BrowseErrorActivity shows how to use ErrorFragment
  */

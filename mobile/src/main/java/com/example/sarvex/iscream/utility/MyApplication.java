@@ -1,4 +1,4 @@
-package com.example.sarvex.iscream;
+package com.example.sarvex.iscream.utility;
 
 import android.app.Application;
 import android.content.Context;

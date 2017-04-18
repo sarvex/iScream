@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1073848440141-usffi5lptm5sg06p3akimf631q5rp8pn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sarvex.iscream",
+            "certificate_hash": "569d5380fec625ab77399f323037c474d488c32f"
+          }
+        },
+        {
           "client_id": "1073848440141-aejdllt97dh8jvmqs3uepi52ok31o72i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

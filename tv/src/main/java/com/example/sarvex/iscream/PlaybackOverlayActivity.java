@@ -29,6 +29,10 @@ import android.widget.VideoView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.mikepenz.iconics.context.IconicsContextWrapper;
+
+import butterknife.ButterKnife;
+import icepick.Icepick;
 
 /**
  * PlaybackOverlayActivity for video playback that loads PlaybackOverlayFragment

@@ -1,18 +1,16 @@
-package com.example.sarvex.iscream;
+package com.example.sarvex.iscream.login;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
+import com.example.sarvex.iscream.R;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
 
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
-public class MyDisplayActivity extends Activity {
-
-  private TextView mTextView;
+public class SignUpActivity extends AppCompatActivity {
 
   @Override
   protected void onSaveInstanceState(Bundle outState) {
@@ -30,8 +28,6 @@ public class MyDisplayActivity extends Activity {
     super.onCreate(savedInstanceState);
     Icepick.restoreInstanceState(this, savedInstanceState);
     ButterKnife.bind(this);
-
-    setContentView(R.layout.activity_display);
-    mTextView = (TextView) findViewById(R.id.text);
+    setContentView(R.layout.activity_sign_up);
   }
 }
