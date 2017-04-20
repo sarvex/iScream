@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"
-        app:cardBackgroundColor="@color/primary"
         app:cardElevation="6sp">
 
         <android.support.design.widget.TextInputLayout
@@ -50,7 +49,7 @@
     android:layout_margin="16dp"
     android:layout_marginTop="48dp"
     app:borderWidth="0dp"
-    app:ico_color="@color/primary"
+    app:ico_color="@color/icons"
     app:ico_icon="gmd-help"
     app:ico_size="48dp"
     app:layout_anchor="@+id/email_card"

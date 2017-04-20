@@ -1,6 +1,7 @@
 package com.example.sarvex.iscream.intro;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.View;
 
 import com.example.sarvex.iscream.MainActivity;
 import com.example.sarvex.iscream.login.LoginActivity;
+import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
@@ -25,13 +27,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 
-public class IntroActivity extends AppIntro2 implements WelcomeIntroFragment.OnFragmentInteractionListener,
+public class IntroActivity extends AppIntro implements WelcomeIntroFragment.OnFragmentInteractionListener,
     ScreamerIntroFragment.OnFragmentInteractionListener, PacifierIntroFragment.OnFragmentInteractionListener,
     EnterIntroFragment.OnFragmentInteractionListener {
 
   private static final String TAG = IntroActivity.class.toString();
   @BindView(R.id.intro_layout) ConstraintLayout introLayout;
   private FirebaseAuth authentication;
+  private SharedPreferences preferences;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class IntroActivity extends AppIntro2 implements WelcomeIntroFragment.OnF
     //    addSlide(new ScreamerIntroFragment());
     //    addSlide(new PacifierIntroFragment());
     //    addSlide(new EnterIntroFragment());
+
+    preferences = getSharedPreferences("com.sarvex.iScream", MODE_PRIVATE);
 
     addSlide(AppIntroFragment.newInstance("Welcome", "Let's take capitalism out of experiences", R.drawable.welcome,
         getResources().getColor(R.color.primary_dark)));
@@ -55,6 +60,18 @@ public class IntroActivity extends AppIntro2 implements WelcomeIntroFragment.OnF
     setProgressButtonEnabled(true);
 
     authentication = FirebaseAuth.getInstance();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    if (preferences.getBoolean("firstrun", false)) {
+      startActivity(new Intent(getApplicationContext(), LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+          Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    } else {
+      preferences.edit().putBoolean("firstrun", false).apply();
+    }
   }
 
   @Override

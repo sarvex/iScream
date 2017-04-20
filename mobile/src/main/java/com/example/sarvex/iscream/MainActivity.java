@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
   private List<Scream> screams = new ArrayList<>(10);
   private ProgressDialog progress;
+  private SharedPreferences preferences;
 
 
   // Used to load the 'native-lib' library on application startup.
@@ -85,6 +87,18 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @Override
+  protected void onStart() {
+    super.onStart();
+
+    FirebaseUser user = authentication.getCurrentUser();
+    updateUI(user);
+  }
+
+  private void updateUI(FirebaseUser user) {
+
+  }
+
+  @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Icepick.restoreInstanceState(this, savedInstanceState);
@@ -101,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
     setScreams();
 
+    setPreferences();
+
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -109,11 +125,10 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    user = FirebaseAuth.getInstance().getCurrentUser();
-    if (user == null) {
-      startActivity(new Intent(this, IntroActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
-          .FLAG_ACTIVITY_CLEAR_TASK));
-    }
+  }
+
+  private void setPreferences() {
+    preferences = getSharedPreferences("com.sarvex.iScream", MODE_PRIVATE);
   }
 
   private void setScreams() {
@@ -145,23 +160,23 @@ public class MainActivity extends AppCompatActivity {
       }
     }).build();
 
-    drawer = new DrawerBuilder().withActivity(this).withAccountHeader(accountHeader).withToolbar(toolbar).withFullscreen(true).addDrawerItems(new PrimaryDrawerItem().withName("Profile").withIcon(GoogleMaterial.Icon.gmd_person).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+    drawer = new DrawerBuilder().withActivity(this).withAccountHeader(accountHeader).withToolbar(toolbar)
+        .withFullscreen(true).addDrawerItems(new PrimaryDrawerItem().withName("Profile").withIcon(GoogleMaterial.Icon
+            .gmd_person).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
       @Override
       public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
         startActivity(new Intent(getParent(), ProfileActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
             .FLAG_ACTIVITY_CLEAR_TASK));
         return false;
       }
-    }), new PrimaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
-        .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+    }), new PrimaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
       @Override
       public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
         startActivity(new Intent(getParent(), SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
             .FLAG_ACTIVITY_CLEAR_TASK));
         return false;
       }
-    }), new PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_sign_out)
-        .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+    }), new PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_sign_out).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
       @Override
       public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
         authentication.signOut();
@@ -197,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
   private Intent doShare() {
     return null;
   }
+
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
