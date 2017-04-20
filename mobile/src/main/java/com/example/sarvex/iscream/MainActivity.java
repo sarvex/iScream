@@ -1,5 +1,6 @@
 package com.example.sarvex.iscream;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +22,15 @@ import android.view.View;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.ShareActionProvider;
 
+import com.example.sarvex.iscream.intro.IntroActivity;
+import com.example.sarvex.iscream.login.LoginActivity;
+import com.example.sarvex.iscream.login.ProfileActivity;
 import com.example.sarvex.iscream.scream.Scream;
 import com.example.sarvex.iscream.scream.ScreamAdapter;
+import com.example.sarvex.iscream.utility.Utility;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
@@ -32,6 +40,7 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.util.ArrayList;
@@ -51,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
   private Drawer drawer;
   private ShareActionProvider shareActionProvider;
 
+  private FirebaseAnalytics analytics;
+  private FirebaseAuth authentication;
+  private FirebaseUser user;
+
   private List<Scream> screams = new ArrayList<>(10);
+  private ProgressDialog progress;
 
 
   // Used to load the 'native-lib' library on application startup.
@@ -77,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
 
+    authentication = FirebaseAuth.getInstance();
+    analytics = FirebaseAnalytics.getInstance(this);
+    analytics.setMinimumSessionDuration(5000);
+
     setupToolbar();
 
     setupDrawer();
@@ -91,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    user = FirebaseAuth.getInstance().getCurrentUser();
+    if (user == null) {
+      startActivity(new Intent(this, IntroActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
+          .FLAG_ACTIVITY_CLEAR_TASK));
+    }
   }
 
   private void setScreams() {
@@ -122,19 +145,32 @@ public class MainActivity extends AppCompatActivity {
       }
     }).build();
 
-    drawer = new DrawerBuilder().withActivity(this).withAccountHeader(accountHeader).withToolbar(toolbar)
-        .withFullscreen(true).addDrawerItems(new PrimaryDrawerItem().withName("Order T-Shirts").withIcon
-            (GoogleMaterial.Icon.gmd_local_florist), new PrimaryDrawerItem().withName("Profile").withIcon
-            (GoogleMaterial.Icon.gmd_person), new PrimaryDrawerItem().withName("Settings").withIcon(GoogleMaterial
-            .Icon.gmd_settings), new PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_sign_out),
-            new PrimaryDrawerItem().withName("Order T-Shirts").withIcon(GoogleMaterial.Icon.gmd_local_florist), new
-                PrimaryDrawerItem().withName("Profile").withIcon(GoogleMaterial.Icon.gmd_person), new
-                PrimaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings), new
-                PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_sign_out), new PrimaryDrawerItem
-                ().withName("Order T-Shirts").withIcon(GoogleMaterial.Icon.gmd_local_florist), new PrimaryDrawerItem
-                ().withName("Profile").withIcon(GoogleMaterial.Icon.gmd_person), new PrimaryDrawerItem().withName
-                ("Settings").withIcon(GoogleMaterial.Icon.gmd_settings), new PrimaryDrawerItem().withName("Logout")
-                .withIcon(FontAwesome.Icon.faw_sign_out)).build();
+    drawer = new DrawerBuilder().withActivity(this).withAccountHeader(accountHeader).withToolbar(toolbar).withFullscreen(true).addDrawerItems(new PrimaryDrawerItem().withName("Profile").withIcon(GoogleMaterial.Icon.gmd_person).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+      @Override
+      public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
+        startActivity(new Intent(getParent(), ProfileActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
+            .FLAG_ACTIVITY_CLEAR_TASK));
+        return false;
+      }
+    }), new PrimaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
+        .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+      @Override
+      public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
+        startActivity(new Intent(getParent(), SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent
+            .FLAG_ACTIVITY_CLEAR_TASK));
+        return false;
+      }
+    }), new PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_sign_out)
+        .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+      @Override
+      public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
+        authentication.signOut();
+
+        startActivity(new Intent(getBaseContext(), IntroActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+            Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        return false;
+      }
+    })).build();
   }
 
   @Override

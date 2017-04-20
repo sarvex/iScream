@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1073848440141-usffi5lptm5sg06p3akimf631q5rp8pn.apps.googleusercontent.com",
+          "client_id": "1073848440141-vcgonnhobkfm133s5sq5tapum7tuad7u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.sarvex.iscream",
@@ -23,11 +23,11 @@
           }
         },
         {
-          "client_id": "1073848440141-aejdllt97dh8jvmqs3uepi52ok31o72i.apps.googleusercontent.com",
+          "client_id": "1073848440141-m07oljifgi5q1nmkdd72lnqrf8pp7pgf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.sarvex.iscream",
-            "certificate_hash": "59d9129157f8b5af4db1376f24fad55a800365d3"
+            "certificate_hash": "60040f227401402b423394877e194b0ea9e57857"
           }
         },
         {

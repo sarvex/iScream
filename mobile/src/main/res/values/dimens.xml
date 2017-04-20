@@ -1,4 +1,13 @@
 <resources>
   <dimen name="fab_margin">16dp</dimen>
   <dimen name="toolbar_margin_top">38px</dimen>
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+  <dimen name="compact_horizontal_margin">8dp</dimen>
+  <dimen name="compact_vertical_margin">8dp</dimen>
+  <dimen name="fab_elevation">5dp</dimen>
+  <dimen name="fab_rise">3dp</dimen>
+  <dimen name="image_final_width">32dp</dimen>
+  <dimen name="image_width">120dp</dimen>
+  <integer name="fab_duration">100</integer>
 </resources>

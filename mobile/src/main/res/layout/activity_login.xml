@@ -1,10 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.example.sarvex.iscream.login.LoginActivity">
+  tools:context=".login.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+  <ScrollView
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <android.support.v7.widget.CardView
+        android:id="@+id/username_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6sp"
+        app:cardElevation="6sp">
+
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/username_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/username_placeholder"
+          app:hintAnimationEnabled="true">
+
+          <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textVisiblePassword|textNoSuggestions"/>
+        </android.support.design.widget.TextInputLayout>
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:id="@+id/password_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_card"
+        android:layout_margin="6sp"
+        app:cardElevation="6sp">
+
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/password_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:hintAnimationEnabled="true">
+
+          <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_placeholder"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"/>
+        </android.support.design.widget.TextInputLayout>
+      </android.support.v7.widget.CardView>
+    </RelativeLayout>
+  </ScrollView>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/expand"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|bottom"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    app:borderWidth="0dp"
+    app:ico_color="@color/icons"
+    app:ico_icon="gmd_add_circle"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/password_card"
+    app:layout_anchorGravity="bottom|left|start"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/sign_up"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|bottom"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    android:visibility="invisible"
+    app:ico_color="@color/icons"
+    app:ico_icon="gmd_person_add"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/expand"
+    app:layout_anchorGravity="bottom|left"
+    app:pressedTranslationZ="12dp"
+    app:tabGravity="center"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/google_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|bottom"
+    android:layout_margin="16sp"
+    android:clickable="true"
+    android:visibility="invisible"
+    app:ico_color="@color/google"
+    app:ico_icon="faw-google-plus"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/sign_up"
+    app:layout_anchorGravity="bottom|left"
+    app:pressedTranslationZ="12dp"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/facebook_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|bottom"
+    android:layout_margin="16sp"
+    android:clickable="true"
+    android:visibility="invisible"
+    app:ico_color="@color/facebook"
+    app:ico_icon="faw-facebook"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/google_login"
+    app:layout_anchorGravity="bottom|left"
+    app:pressedTranslationZ="12dp"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/twitter_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|bottom"
+    android:layout_margin="16sp"
+    android:clickable="true"
+    android:visibility="invisible"
+    app:borderWidth="0dp"
+    app:ico_color="@color/twitter"
+    app:ico_icon="faw-twitter"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/facebook_login"
+    app:layout_anchorGravity="bottom|left"
+    app:pressedTranslationZ="12dp"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/forgot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|bottom"
+    android:layout_margin="16dp"
+    android:layout_marginTop="48dp"
+    app:borderWidth="0dp"
+    app:ico_color="@color/icons"
+    app:ico_icon="gmd-help"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/password_card"
+    app:layout_anchorGravity="bottom|center"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end|bottom"
+    android:layout_margin="16dp"
+    android:layout_marginTop="48dp"
+    app:borderWidth="0dp"
+    app:ico_color="@color/icons"
+    app:ico_icon="faw-sign-in"
+    app:ico_size="48dp"
+    app:layout_anchor="@+id/password_card"
+    app:layout_anchorGravity="bottom|right|end"
+    app:tabGravity="fill"
+    app:tabMode="scrollable"/>
+
+</android.support.design.widget.CoordinatorLayout>
