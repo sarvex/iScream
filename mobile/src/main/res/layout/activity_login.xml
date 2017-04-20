@@ -14,13 +14,14 @@
 
     <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_marginTop="80sp">
 
       <android.support.v7.widget.CardView
         android:id="@+id/username_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6sp"
+        android:layout_margin="12sp"
         app:cardElevation="6sp">
 
         <android.support.design.widget.TextInputLayout
@@ -44,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/username_card"
-        android:layout_margin="6sp"
+        android:layout_margin="12sp"
         app:cardElevation="6sp">
 
         <android.support.design.widget.TextInputLayout
@@ -65,89 +66,26 @@
     </RelativeLayout>
   </ScrollView>
 
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/expand"
+  <com.facebook.login.widget.LoginButton
+    android:id="@+id/facebook"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="start|bottom"
-    android:layout_margin="16dp"
-    android:clickable="true"
-    app:borderWidth="0dp"
-    app:ico_color="@color/icons"
-    app:ico_icon="gmd_add_circle"
-    app:ico_size="48dp"
-    app:layout_anchor="@+id/password_card"
-    app:layout_anchorGravity="bottom|left|start"
-    app:tabGravity="fill"
-    app:tabMode="scrollable"/>
+    android:layout_gravity="top|center"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop="30dp"/>
 
   <android.support.design.widget.FloatingActionButton
     android:id="@+id/sign_up"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="start|bottom"
-    android:layout_margin="16dp"
+    android:layout_margin="12sp"
     android:clickable="true"
-    android:visibility="invisible"
     app:ico_color="@color/icons"
     app:ico_icon="gmd_person_add"
     app:ico_size="48dp"
-    app:layout_anchor="@+id/expand"
-    app:layout_anchorGravity="bottom|left"
-    app:pressedTranslationZ="12dp"
-    app:tabGravity="center"
-    app:tabMode="scrollable"/>
-
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/google_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="start|bottom"
-    android:layout_margin="16sp"
-    android:clickable="true"
-    android:visibility="invisible"
-    app:ico_color="@color/google"
-    app:ico_icon="faw-google-plus"
-    app:ico_size="48dp"
-    app:layout_anchor="@+id/sign_up"
-    app:layout_anchorGravity="bottom|left"
-    app:pressedTranslationZ="12dp"
-    app:tabGravity="fill"
-    app:tabMode="scrollable"/>
-
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/facebook_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="start|bottom"
-    android:layout_margin="16sp"
-    android:clickable="true"
-    android:visibility="invisible"
-    app:ico_color="@color/facebook"
-    app:ico_icon="faw-facebook"
-    app:ico_size="48dp"
-    app:layout_anchor="@+id/google_login"
-    app:layout_anchorGravity="bottom|left"
-    app:pressedTranslationZ="12dp"
-    app:tabGravity="fill"
-    app:tabMode="scrollable"/>
-
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/twitter_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="start|bottom"
-    android:layout_margin="16sp"
-    android:clickable="true"
-    android:visibility="invisible"
-    app:borderWidth="0dp"
-    app:ico_color="@color/twitter"
-    app:ico_icon="faw-twitter"
-    app:ico_size="48dp"
-    app:layout_anchor="@+id/facebook_login"
-    app:layout_anchorGravity="bottom|left"
-    app:pressedTranslationZ="12dp"
-    app:tabGravity="fill"
+    app:layout_anchor="@id/password_card"
+    app:layout_anchorGravity="bottom|start"
     app:tabMode="scrollable"/>
 
   <android.support.design.widget.FloatingActionButton
@@ -155,15 +93,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center|bottom"
-    android:layout_margin="16dp"
-    android:layout_marginTop="48dp"
+    android:layout_margin="12sp"
     app:borderWidth="0dp"
     app:ico_color="@color/icons"
     app:ico_icon="gmd-help"
     app:ico_size="48dp"
-    app:layout_anchor="@+id/password_card"
+    app:layout_anchor="@id/password_card"
     app:layout_anchorGravity="bottom|center"
-    app:tabGravity="fill"
     app:tabMode="scrollable"/>
 
   <android.support.design.widget.FloatingActionButton
@@ -177,9 +113,8 @@
     app:ico_color="@color/icons"
     app:ico_icon="faw-sign-in"
     app:ico_size="48dp"
-    app:layout_anchor="@+id/password_card"
-    app:layout_anchorGravity="bottom|right|end"
-    app:tabGravity="fill"
+    app:layout_anchor="@id/password_card"
+    app:layout_anchorGravity="bottom|end"
     app:tabMode="scrollable"/>
 
 </android.support.design.widget.CoordinatorLayout>
