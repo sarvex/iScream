@@ -105,9 +105,9 @@ dependencies {
   testCompile 'org.robolectric:robolectric:4.10'
   testCompile 'junit:junit:4.12'
 
-  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
   debugCompile 'com.squareup.leakcanary:leakcanary-android:2.10'
-  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
