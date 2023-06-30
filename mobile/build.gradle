@@ -106,7 +106,7 @@ dependencies {
   testCompile 'junit:junit:4.13.2'
 
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-  debugCompile 'com.squareup.leakcanary:leakcanary-android:2.11'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:2.12'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 }
 
