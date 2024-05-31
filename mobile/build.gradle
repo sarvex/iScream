@@ -95,7 +95,7 @@ dependencies {
   compile 'com.mikepenz:iconics-core:5.5.0-compose01@aar'
   compile 'com.mikepenz:google-material-typeface:4.0.0.2-kotlin@aar'
   compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.9-kotlin@aar'
-  compile 'com.mikepenz:fontawesome-typeface:5.13.3.0-kotlin@aar'
+  compile 'com.mikepenz:fontawesome-typeface:5.13.3.1-kotlin@aar'
   compile 'com.github.paolorotolo:appintro:4.1.0'
 
   annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
